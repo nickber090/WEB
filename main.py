@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/main')
 def main_window():
-    return render_template('static/templates/index.html', title='job well done')
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
