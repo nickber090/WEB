@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карточка автомобиля - Маркетплейс</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        .car-card {
+            max-width: 350px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+        .car-card:hover {
+            transform: translateY(-5px);
+        }
+        .car-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .car-info {
+            padding: 20px;
+        }
+        .car-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0 0 10px;
+            color: #333;
+        }
+        .car-price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #e53935;
+            margin: 0 0 15px;
+        }
+        .car-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .car-detail {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #666;
+        }
+        .car-detail i {
+            margin-right: 5px;
+            color: #888;
+        }
+        .car-location {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .car-location i {
+            margin-right: 5px;
+        }
+        .car-seller {
+            display: flex;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .seller-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .seller-info {
+            font-size: 14px;
+        }
+        .seller-name {
+            font-weight: bold;
+            color: #333;
+        }
+        .seller-rating {
+            color: #ffc107;
+            font-size: 12px;
+        }
+        .car-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #e53935;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .image-container {
+            position: relative;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="car-card">
+        <div class="image-container">
+            <img src="https://via.placeholder.com/350x220?text=Фото+автомобиля" alt="Фото автомобиля" class="car-image">
+            <div class="car-badge">Топ</div>
+        </div>
+        <div class="car-info">
+            <h3 class="car-title">Toyota Camry 2021</h3>
+            <div class="car-price">2 450 000 ₽</div>
+
+            <div class="car-details">
+                <div class="car-detail">
+                    <i class="fas fa-tachometer-alt"></i> 45 000 км
+                </div>
+                <div class="car-detail">
+                    <i class="fas fa-gas-pump"></i> Бензин
+                </div>
+                <div class="car-detail">
+                    <i class="fas fa-cog"></i> Автомат
+                </div>
+                <div class="car-detail">
+                    <i class="fas fa-car"></i> Седан
+                </div>
+            </div>
+
+            <div class="car-location">
+                <i class="fas fa-map-marker-alt"></i> Москва
+            </div>
+
+            <div class="car-seller">
+                <img src="https://via.placeholder.com/40x40?text=AV" alt="Аватар продавца" class="seller-avatar">
+                <div class="seller-info">
+                    <div class="seller-name">Автосалон "Премиум"</div>
+                    <div class="seller-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        (24 отзыва)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
