@@ -13,3 +13,12 @@ a {
 body {
     background-color: #b3b2b3;
 }
+
+.footer {
+position: fixed;
+bottom: 0;
+background-color: #80817e;
+width: 100%;
+text-size: 18px;
+text-align: center;
+}
