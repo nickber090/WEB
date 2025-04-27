@@ -5,9 +5,9 @@ app = Flask(__name__)
 
 
 @app.route('/')
-@app.route('/main')
+@app.route('/index.html')
 def main_window():
-    return render_template('index.html')
+    return render_template('index.html', title='Главная страница')
 
 
 if __name__ == '__main__':

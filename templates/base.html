@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div>
+                <a href="index.html">Главная</a>
+                <a href="#">Избранное</a>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="container">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
