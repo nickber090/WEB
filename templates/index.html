@@ -1,4 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container">
+    <h1 class="my-4">Автомобили в продаже</h1>
+
+    <div class="row">
+        {% for car in cars %}
+        <div class="col-md-4 mb-4">
+            {% include 'marketplace_card.html' %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

@@ -1,24 +1,30 @@
-header {
-    background-color: #80817e;
-    font-size: 24px;
-    text-align: center;
-    height: 70px;
-    padding-top: 15px;
-}
-
-a {
-    color: #000000;
-}
-
 body {
-    background-color: #b3b2b3;
+    background-color: #f8f9fa;
+    padding-bottom: 60px;
+}
+
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
 .footer {
-position: fixed;
-bottom: 0;
-background-color: #80817e;
-width: 100%;
-text-size: 18px;
-text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.car-card {
+    transition: transform 0.3s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
