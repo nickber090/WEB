@@ -4,6 +4,17 @@
         {% if car.badge %}
         <div class="car-badge">{{ car.badge }}</div>
         {% endif %}
+        <div class="favorite-button">
+            {% if car.id in session.get('favorites', []) %}
+                <a href="{{ url_for('remove_from_favorites', car_id=car.id) }}" class="btn btn-sm btn-danger" title="Удалить из избранного">
+                    <i class="fas fa-heart"></i>
+                </a>
+            {% else %}
+                <a href="{{ url_for('add_to_favorites', car_id=car.id) }}" class="btn btn-sm btn-outline-secondary" title="Добавить в избранное">
+                    <i class="far fa-heart"></i>
+                </a>
+            {% endif %}
+        </div>
     </div>
     <div class="card-body">
         <h5 class="card-title car-title">{{ car.title }}</h5>

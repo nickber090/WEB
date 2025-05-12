@@ -23,6 +23,7 @@ body {
 .car-card {
     transition: transform 0.3s ease;
     height: 100%;
+    position: relative;
 }
 
 .car-card:hover {
@@ -51,4 +52,38 @@ body {
 .no-results {
     text-align: center;
     padding: 40px 0;
+}
+
+.favorite-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+.favorite-button .btn {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.image-container {
+    position: relative;
+}
+
+.car-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ffc107;
+    color: #000;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 1;
 }

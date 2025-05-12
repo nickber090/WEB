@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect, url_for
 
 
-app = Flask(__name__)
+app = Flask(__name__                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        )
+app.secret_key = 'your-secret-key-123'
 
 # Пример данных об автомобилях
 cars_data = [
@@ -121,6 +122,7 @@ def main_window():
     transmissions = sorted(list(set(car['transmission'] for car in cars_data)))
     locations = sorted(list(set(car['location'] for car in cars_data)))
 
+
     return render_template(
         'index.html',
         title='Главная страница',
@@ -136,7 +138,48 @@ def main_window():
         selected_location=location
     )
 
+@app.route('/add_to_favorites/<int:car_id>')
+def add_to_favorites(car_id):
+    if 'favorites' not in session:
+        session['favorites'] = []
+
+    if car_id not in session['favorites']:
+        session['favorites'].append(car_id)
+        session.modified = True
+
+    return redirect(request.referrer or url_for('main_window'))
+
+
+@app.route('/remove_from_favorites/<int:car_id>')
+def remove_from_favorites(car_id):
+    if 'favorites' in session and car_id in session['favorites']:
+        session['favorites'].remove(car_id)
+        session.modified = True
+
+    return redirect(request.referrer or url_for('main_window'))
+
+
+@app.route('/favorites')
+def favorites():
+    if 'favorites' not in session:
+        session['favorites'] = []
+
+    favorite_cars = [car for car in cars_data if car['id'] in session.get('favorites', [])]
+
+    fuel_types = sorted(list(set(car['fuel'] for car in cars_data)))
+    transmissions = sorted(list(set(car['transmission'] for car in cars_data)))
+    locations = sorted(list(set(car['location'] for car in cars_data)))
+
+    return render_template(
+        'index.html',
+        title='Избранное',
+        cars=favorite_cars,
+        fuel_types=fuel_types,
+        transmissions=transmissions,
+        locations=locations,
+        is_favorites_page=True
+    )
+
 
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
-

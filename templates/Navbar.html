@@ -25,6 +25,7 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Электромобили</a></li>
           </ul>
+        </li>
       </ul>
       <div class="d-flex">
         <div class="dropdown me-3">
@@ -35,7 +36,8 @@
             <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt me-1"></i>Войти</a></li>
             <li><a class="dropdown-item" href="#"><i class="fas fa-user-plus me-1"></i>Регистрация</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#"><i class="fas fa-heart me-1"></i>Избранное</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('favorites') }}"><i class="fas fa-heart me-1"></i>Избранное
+              {% if 'favorites' in session %}({{ session['favorites']|length }}){% endif %}</a></li>
           </ul>
         </div>
         <button class="btn btn-primary">
