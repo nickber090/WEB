@@ -29,12 +29,23 @@
       </ul>
       <div class="d-flex">
         <div class="dropdown me-3">
+          {% if current_user.is_authenticated %}
           <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-user me-1"></i>Аккаунт
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt me-1"></i>Войти</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fas fa-user-plus me-1"></i>Регистрация</a></li>
+              <i class="fas fa-user me-1"></i>{{ current_user.name }}
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          {% else %}
+              <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user me-1"></i>Аккаунт
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              {% endif %}
+            {% if current_user.is_authenticated %}
+              <li><a class="dropdown-item" href="/logout"><i class="fas fa-sign-in-alt me-1"></i>Выйти</a></li>
+            {% else %}
+              <li><a class="dropdown-item" href="/login"><i class="fas fa-sign-in-alt me-1"></i>Войти</a></li>
+              <li><a class="dropdown-item" href="/register"><i class="fas fa-user-plus me-1"></i>Регистрация</a></li>
+            {% endif %}
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{{ url_for('favorites') }}"><i class="fas fa-heart me-1"></i>Избранное
               {% if 'favorites' in session %}({{ session['favorites']|length }}){% endif %}</a></li>
