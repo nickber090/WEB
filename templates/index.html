@@ -1,15 +1,80 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <h1 class="my-4">Автомобили в продаже</h1>
+<div class="container my-4">
+    <h1 class="mb-4">Автомобили в продаже</h1>
 
-    <div class="row">
-        {% for car in cars %}
-        <div class="col-md-4 mb-4">
-            {% include 'marketplace_card.html' %}
+    <!-- Форма фильтрации -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="get" action="{{ url_for('main_window') }}">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label for="search" class="form-label">Поиск</label>
+                        <input type="text" class="form-control" id="search" name="search"
+                               value="{{ search_query if search_query }}" placeholder="Марка или модель">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="min_price" class="form-label">Цена от</label>
+                        <input type="number" class="form-control" id="min_price" name="min_price"
+                               value="{{ min_price if min_price is not none }}" placeholder="₽">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="max_price" class="form-label">Цена до</label>
+                        <input type="number" class="form-control" id="max_price" name="max_price"
+                               value="{{ max_price if max_price is not none }}" placeholder="₽">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="location" class="form-label">Город</label>
+                        <select class="form-select" id="location" name="location">
+                            <option value="">Все города</option>
+                            {% for loc in locations %}
+                            <option value="{{ loc }}" {% if selected_location == loc %}selected{% endif %}>{{ loc }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="fuel_type" class="form-label">Топливо</label>
+                        <select class="form-select" id="fuel_type" name="fuel_type">
+                            <option value="">Любое</option>
+                            {% for fuel in fuel_types %}
+                            <option value="{{ fuel }}" {% if selected_fuel == fuel %}selected{% endif %}>{{ fuel }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="transmission" class="form-label">Коробка</label>
+                        <select class="form-select" id="transmission" name="transmission">
+                            <option value="">Любая</option>
+                            {% for trans in transmissions %}
+                            <option value="{{ trans }}" {% if selected_transmission == trans %}selected{% endif %}>{{ trans }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary me-2">Применить</button>
+                        <a href="{{ url_for('main_window') }}" class="btn btn-outline-secondary">Сбросить</a>
+                    </div>
+                </div>
+            </form>
         </div>
-        {% endfor %}
+    </div>
+
+    <!-- Результаты поиска -->
+    <div class="row">
+        {% if cars %}
+            {% for car in cars %}
+            <div class="col-md-4 mb-4">
+                {% include 'marketplace_card.html' %}
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12">
+                <div class="alert alert-info" role="alert">
+                    По вашему запросу ничего не найдено. Попробуйте изменить параметры поиска.
+                </div>
+            </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

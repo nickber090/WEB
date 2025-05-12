@@ -22,9 +22,33 @@ body {
 
 .car-card {
     transition: transform 0.3s ease;
+    height: 100%;
 }
 
 .car-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.filter-card {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.price-input-group {
+    display: flex;
+    align-items: center;
+}
+
+.price-input-group .form-control {
+    flex: 1;
+}
+
+.price-input-group .input-group-text {
+    min-width: 40px;
+    justify-content: center;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px 0;
 }

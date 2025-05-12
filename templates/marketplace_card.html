@@ -7,11 +7,11 @@
     </div>
     <div class="card-body">
         <h5 class="card-title car-title">{{ car.title }}</h5>
-        <div class="car-price">{{ car.price }}</div>
+        <div class="car-price">{{ "{:,.0f} ₽".format(car.price).replace(',', ' ') }}</div>
 
         <div class="car-details">
             <div class="car-detail">
-                <i class="fas fa-tachometer-alt"></i> {{ car.mileage }}
+                <i class="fas fa-tachometer-alt"></i> {{ "{:,.0f} км".format(car.mileage).replace(',', ' ') }}
             </div>
             <div class="car-detail">
                 <i class="fas fa-gas-pump"></i> {{ car.fuel }}
@@ -20,7 +20,7 @@
                 <i class="fas fa-cog"></i> {{ car.transmission }}
             </div>
             <div class="car-detail">
-                <i class="fas fa-car"></i> {{ car.body }}
+                <i class="fas fa-calendar-alt"></i> {{ car.year }}
             </div>
         </div>
 
